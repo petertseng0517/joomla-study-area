@@ -1,0 +1,25 @@
+site_name: Joomla Study Zone
+theme:
+  name: material
+nav:
+  - 首頁: index.md
+  - 關於我: about.md
+  - 基礎joomla教學:
+      - 如何取得Joomla管理帳號: joomla/如何取得Joomla管理帳號.md
+      - 如何登入Joomla系統: joomla/如何登入Joomla系統.md
+      - 如何編輯Joomla文章: joomla/如何編輯Joomla文章.md
+      - 如何在joomla文章新增圖片: joomla/如何在joomla文章新增圖片.md
+      - 如何在joomla文章內文放置超連結: joomla/如何在joomla文章內文放置超連結.md
+      - 如何在joomla文章內文放置檔案下載連結: joomla/如何在joomla文章內文放置檔案下載連結.md
+      - Joomla編輯者切勿有以下行為: joomla/Joomla編輯者切勿有以下行為.md
+  - 進階教學(醫務部): 
+      - 如何編輯醫療科首頁: joomla/如何編輯醫療科首頁.md
+      - 如何編輯醫師資料: joomla/如何編輯醫師資料.md
+      - 如何新增醫療科的衛教內容: joomla/如何新增醫療科的衛教內容.md
+      - 如何新增醫療科的最新消息: joomla/如何新增醫療科的最新消息.md
+  - 進階教學(醫事室):
+      - 如何更新門診表下載連結: joomla/如何更新門診表下載連結.md
+      - 如何疫苗公告(流感、M痘): joomla/如何疫苗公告(流感、M痘).md
+  - 進階教學(總務室):
+      - 如何上架招標公告: joomla/如何上架招標公告.md
+      - 如何編輯樓層介紹: joomla/如何編輯樓層介紹.md
