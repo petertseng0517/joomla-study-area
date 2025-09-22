@@ -1,8 +1,9 @@
 # Welcome to Joomla Study
 
-這是提供慈院Joomla網站管理者的學習資源，更多內容請參考 [公共傳播室官網](https://hlm.tzuchi.com.tw/pc/)
+僅提供慈院Joomla網站管理者的學習資源。
 
-![joomla圖片](pic/joomla.png)
+<h3>提醒</h3>
+<ul>
+<li>請勿複製Notes的內容，貼到Joomla的文章中。此舉將帶入複雜的格式程式碼導致拖慢網站速度，且院內檔案路徑，院外民眾瀏覽將看不到檔案(如圖片)。正確方法是先將圖片下載到電腦中，再上傳到Joomla系統中，再插入的文章內容中。</li>
 
-## 教學資源
-- [Joomla_study](joomla/Joomla_study.md)
+</ul>

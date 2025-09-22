@@ -4,24 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "cbcb964b049bf9e0",
+        "id": "e8a0ad358a5997fb",
         "type": "tabs",
         "children": [
           {
-            "id": "47b0f8f2eee7c1c1",
+            "id": "65457241eee949c5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "docs/index.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "index"
             }
+          },
+          {
+            "id": "db81a9d8a9dede2d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README.md"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 345.5
   },
   "right": {
     "id": "871a24373e49061e",
@@ -157,6 +172,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:建立新的 base": false,
       "switcher:開啟快速切換": false,
       "graph:查看關聯圖": false,
       "canvas:建立新畫布": false,
@@ -165,8 +181,10 @@
       "command-palette:開啟命令面板": false
     }
   },
-  "active": "47b0f8f2eee7c1c1",
+  "active": "db81a9d8a9dede2d",
   "lastOpenFiles": [
+    "docs/index.md",
+    "README.md.md",
     "site/search/search_index.json",
     "site/search",
     "site/joomla/如何編輯醫療科首頁/index.html",
@@ -177,34 +195,32 @@
     "site/joomla/如何編輯樓層介紹",
     "site/joomla/如何編輯Joomla文章/index.html",
     "site/joomla/如何編輯Joomla文章",
-    "site/joomla/如何登入Joomla系統/index.html",
-    "site/joomla/pic/joomla.png",
-    "docs/joomla/pic/joomla.png",
-    "docs/index.md",
     "docs/joomla/Joomla_study.md",
-    "docs/joomla/如何登入Joomla系統.md",
+    "docs/joomla/如何新增醫療科的最新消息.md",
+    "docs/joomla/如何新增醫療科的衛教內容.md",
+    "docs/joomla/如何編輯醫師資料.md",
+    "docs/joomla/如何編輯醫療科首頁.md",
+    "docs/joomla/如何更新門診表.md",
+    "docs/about.md",
+    "docs/joomla/如何取得Joomla管理帳號.md",
+    "docs/joomla/如何在joomla文章新增圖片.md",
+    "docs/joomla/如何疫苗公告(流感、M痘).md",
+    "docs/joomla/pic/joomla.png",
+    "docs/joomla/如何在joomla文章內文放置超連結.md",
+    "docs/joomla/如何在joomla文章內文放置檔案下載連結.md",
     "docs/joomla/如何上架招標公告.md",
     "docs/joomla/Joomla編輯者切勿有以下行為.md",
-    "docs/joomla/如何取得Joomla管理帳號.md",
-    "docs/joomla/如何在joomla文章內文放置檔案下載連結.md",
-    "docs/joomla/如何在joomla文章內文放置超連結.md",
-    "docs/joomla/如何在joomla文章新增圖片.md",
-    "docs/joomla/如何新增醫療科的最新消息.md",
-    "docs/joomla/如何更新門診表下載連結.md",
+    "site/joomla/pic/joomla.png",
+    "docs/joomla/如何登入Joomla系統.md",
     "docs/joomla/如何編輯Joomla文章.md",
-    "docs/joomla/如何編輯醫師資料.md",
     "docs/joomla/如何在joomla文章新增表格.md",
-    "docs/joomla/如何疫苗公告(流感、M痘).md",
     "docs/joomla/如何編輯樓層介紹.md",
-    "docs/joomla/如何新增醫療科的衛教內容.md",
     "docs/joomla/如何新增、編輯、刪除醫師資料.md",
-    "docs/joomla/如何編輯醫療科首頁.md",
     "docs/joomla/如何在joomla文章新增影片.md",
     "docs/joomla/如何新增、編輯、刪除Joomla文章.md",
     "docs/joomla/GetJoomlaAccount.md",
     "get.md",
     "docs/ndhu_Study.md",
-    "about.md",
     "site/assets/images/favicon.png"
   ]
 }
