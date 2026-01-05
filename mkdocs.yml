@@ -3,7 +3,7 @@ theme:
   name: material
 nav:
   - 首頁: index.md
-  - 關於我: about.md
+  - 關於我: https://github.com/petertseng0517
   - 基礎joomla教學:
       - 取得Joomla管理帳號: joomla/取得Joomla管理帳號.md
       - 登入Joomla系統: joomla/登入Joomla系統.md
