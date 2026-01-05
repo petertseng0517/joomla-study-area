@@ -1,7 +1,7 @@
 # 我的個人Joomla教學筆記庫
 
 我使用 Obsidian 撰寫，並發佈到 GitHub Pages 的個人知識庫。
-線上網址：[https://petertseng0517.github.io/joomlastudyarea/](https://petertseng0517.github.io/joomlastudyarea/)
+線上網址：[https://petertseng0517.github.io/joomla-study-area/](https://petertseng0517.github.io/joomla-study-area/)
 
 ## 如何瀏覽我的筆記
 
