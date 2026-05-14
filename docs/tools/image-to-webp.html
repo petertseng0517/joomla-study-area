@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圖片裁切轉 WebP 工具</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+      color: #1a1a1a;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    /* 上傳區 */
+    #drop-zone {
+      border: 2px dashed #aaa;
+      border-radius: 10px;
+      background: #fff;
+      padding: 48px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    #drop-zone.dragover {
+      border-color: #1976d2;
+      background: #e3f2fd;
+    }
+
+    #drop-zone p { font-size: 1rem; color: #555; margin-bottom: 8px; }
+    #drop-zone span { font-size: 0.8rem; color: #999; }
+
+    #file-input { display: none; }
+
+    /* 工具區（上傳後顯示） */
+    #tool-area { display: none; }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .editor-layout { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .panel-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    /* Cropper 容器 */
+    .crop-wrapper {
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      background: #eee;
+      border-radius: 4px;
+    }
+
+    #source-image {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* 預覽 */
+    .preview-wrapper {
+      width: 100%;
+      height: 320px;
+      background: #eee;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #preview-canvas {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* 控制列 */
+    .controls {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #555;
+    }
+
+    /* 比例按鈕 */
+    .ratio-buttons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ratio-btn {
+      padding: 5px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f5f5f5;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .ratio-btn:hover { background: #e0e0e0; }
+
+    .ratio-btn.active {
+      background: #1976d2;
+      border-color: #1976d2;
+      color: #fff;
+    }
+
+    /* 品質滑桿 */
+    .quality-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #quality-slider {
+      width: 120px;
+      accent-color: #1976d2;
+    }
+
+    #quality-value {
+      font-size: 0.85rem;
+      color: #333;
+      min-width: 36px;
+    }
+
+    /* 大小顯示 */
+    #size-display {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    #size-display span {
+      font-weight: 600;
+      color: #1976d2;
+    }
+
+    /* 下載按鈕 */
+    #download-btn {
+      margin-left: auto;
+      padding: 10px 24px;
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #download-btn:hover { background: #1565c0; }
+    #download-btn:disabled { background: #aaa; cursor: default; }
+
+    /* 重設按鈕 */
+    #reset-btn {
+      padding: 10px 16px;
+      background: transparent;
+      color: #666;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    #reset-btn:hover { background: #f0f0f0; }
+
+    /* 提示區 */
+    .tip-box {
+      margin-top: 16px;
+      background: #e8f5e9;
+      border-left: 4px solid #43a047;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #2e7d32;
+      line-height: 1.6;
+    }
+
+    /* 不支援提示 */
+    #no-webp-warning {
+      display: none;
+      margin-top: 12px;
+      background: #fff3e0;
+      border-left: 4px solid #fb8c00;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #e65100;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>圖片裁切轉 WebP 工具</h1>
+  <p class="subtitle">上傳 Joomla 圖片前，先裁切並轉成 .webp 格式，減少檔案大小。</p>
+
+  <!-- 上傳區 -->
+  <div id="drop-zone">
+    <p>拖曳圖片到此處，或點選上傳</p>
+    <span>支援 JPG、PNG、GIF、WebP</span>
+    <input type="file" id="file-input" accept="image/jpeg,image/png,image/gif,image/webp">
+  </div>
+
+  <div id="no-webp-warning">
+    您的瀏覽器不支援輸出 WebP 格式，建議使用 Chrome 或 Edge。
+  </div>
+
+  <!-- 工具區 -->
+  <div id="tool-area">
+    <div class="editor-layout">
+      <div class="panel">
+        <div class="panel-title">原圖（拖曳裁切框）</div>
+        <div class="crop-wrapper">
+          <img id="source-image" src="" alt="原圖">
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">裁切預覽</div>
+        <div class="preview-wrapper">
+          <canvas id="preview-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label>裁切比例</label>
+        <div class="ratio-buttons">
+          <button class="ratio-btn" data-ratio="NaN">自由</button>
+          <button class="ratio-btn" data-ratio="1">1:1</button>
+          <button class="ratio-btn" data-ratio="1.3333">4:3</button>
+          <button class="ratio-btn" data-ratio="1.7778">16:9</button>
+          <button class="ratio-btn" data-ratio="0.75">3:4</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>輸出品質</label>
+        <div class="quality-row">
+          <input type="range" id="quality-slider" min="1" max="100" value="85">
+          <span id="quality-value">85%</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>預估大小</label>
+        <div id="size-display">— </div>
+      </div>
+
+      <button id="reset-btn">重新上傳</button>
+      <button id="download-btn">下載 .webp</button>
+    </div>
+
+    <div class="tip-box">
+      下載後，請前往 <strong>Joomla 後台 → 文章編輯 → 插入圖片 → 上傳</strong>，選擇剛下載的 .webp 檔案。
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+<script>
+(function () {
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('file-input');
+  const toolArea = document.getElementById('tool-area');
+  const sourceImage = document.getElementById('source-image');
+  const previewCanvas = document.getElementById('preview-canvas');
+  const qualitySlider = document.getElementById('quality-slider');
+  const qualityValue = document.getElementById('quality-value');
+  const sizeDisplay = document.getElementById('size-display');
+  const downloadBtn = document.getElementById('download-btn');
+  const resetBtn = document.getElementById('reset-btn');
+  const noWebpWarning = document.getElementById('no-webp-warning');
+
+  let cropper = null;
+  let originalFileName = 'image';
+  let previewDebounce = null;
+
+  // 檢查瀏覽器是否支援 WebP 輸出
+  function supportsWebPOutput() {
+    const c = document.createElement('canvas');
+    c.width = 1; c.height = 1;
+    return c.toDataURL('image/webp').startsWith('data:image/webp');
+  }
+
+  if (!supportsWebPOutput()) {
+    noWebpWarning.style.display = 'block';
+    downloadBtn.disabled = true;
+  }
+
+  // 拖曳事件
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+  });
+
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadFile(file);
+  });
+
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) loadFile(fileInput.files[0]);
+  });
+
+  function loadFile(file) {
+    originalFileName = file.name.replace(/\.[^.]+$/, '');
+    const url = URL.createObjectURL(file);
+    sourceImage.src = url;
+    sourceImage.onload = () => {
+      dropZone.style.display = 'none';
+      toolArea.style.display = 'block';
+      initCropper();
+    };
+  }
+
+  function initCropper() {
+    if (cropper) cropper.destroy();
+    cropper = new Cropper(sourceImage, {
+      viewMode: 1,
+      autoCropArea: 0.8,
+      movable: true,
+      zoomable: false,
+      aspectRatio: NaN,
+      crop: schedulePreviw,
+    });
+  }
+
+  function schedulePreviw() {
+    clearTimeout(previewDebounce);
+    previewDebounce = setTimeout(updatePreview, 120);
+  }
+
+  function updatePreview() {
+    if (!cropper) return;
+    const canvas = cropper.getCroppedCanvas();
+    if (!canvas) return;
+    const quality = parseInt(qualitySlider.value) / 100;
+    // 繪製到預覽 canvas
+    previewCanvas.width = canvas.width;
+    previewCanvas.height = canvas.height;
+    previewCanvas.getContext('2d').drawImage(canvas, 0, 0);
+    // 估算大小
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const kb = (blob.size / 1024).toFixed(1);
+      sizeDisplay.innerHTML = `約 <span>${kb} KB</span>`;
+    }, 'image/webp', quality);
+  }
+
+  // 品質滑桿
+  qualitySlider.addEventListener('input', () => {
+    qualityValue.textContent = qualitySlider.value + '%';
+    schedulePreviw();
+  });
+
+  // 比例按鈕
+  document.querySelectorAll('.ratio-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const ratio = parseFloat(btn.dataset.ratio);
+      cropper.setAspectRatio(isNaN(ratio) ? NaN : ratio);
+    });
+  });
+
+  // 下載
+  downloadBtn.addEventListener('click', () => {
+    if (!cropper) return;
+    const canvas = cropper.getCroppedCanvas();
+    if (!canvas) return;
+    const quality = parseInt(qualitySlider.value) / 100;
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = originalFileName + '.webp';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    }, 'image/webp', quality);
+  });
+
+  // 重設
+  resetBtn.addEventListener('click', () => {
+    if (cropper) { cropper.destroy(); cropper = null; }
+    sourceImage.src = '';
+    fileInput.value = '';
+    toolArea.style.display = 'none';
+    dropZone.style.display = 'block';
+    sizeDisplay.innerHTML = '— ';
+    document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+  });
+})();
+</script>
+</body>
+</html>
