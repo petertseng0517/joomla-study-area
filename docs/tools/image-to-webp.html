@@ -10,8 +10,8 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      color: #333;
+      background: #0d1117;
+      color: #e6edf3;
       min-height: 100vh;
       padding: 24px 16px;
     }
@@ -24,20 +24,20 @@
     h1 {
       font-size: 1.5rem;
       margin-bottom: 4px;
-      color: #1a1a1a;
+      color: #e6edf3;
     }
 
     .subtitle {
       font-size: 0.9rem;
-      color: #666;
+      color: #8b949e;
       margin-bottom: 24px;
     }
 
     /* 上傳區 */
     #drop-zone {
-      border: 2px dashed #aaa;
+      border: 2px dashed #30363d;
       border-radius: 10px;
-      background: #fff;
+      background: #161b22;
       padding: 48px 24px;
       text-align: center;
       cursor: pointer;
@@ -45,12 +45,12 @@
     }
 
     #drop-zone.dragover {
-      border-color: #1976d2;
-      background: #e3f2fd;
+      border-color: #00897b;
+      background: #0d2818;
     }
 
-    #drop-zone p { font-size: 1rem; color: #555; margin-bottom: 8px; }
-    #drop-zone span { font-size: 0.8rem; color: #999; }
+    #drop-zone p { font-size: 1rem; color: #8b949e; margin-bottom: 8px; }
+    #drop-zone span { font-size: 0.8rem; color: #6e7681; }
 
     #file-input { display: none; }
 
@@ -69,16 +69,16 @@
     }
 
     .panel {
-      background: #fff;
+      background: #161b22;
+      border: 1px solid #30363d;
       border-radius: 8px;
       padding: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
 
     .panel-title {
       font-size: 0.8rem;
       font-weight: 600;
-      color: #888;
+      color: #8b949e;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 8px;
@@ -89,7 +89,7 @@
       width: 100%;
       height: 320px;
       overflow: hidden;
-      background: #eee;
+      background: #0d1117;
       border-radius: 4px;
     }
 
@@ -102,7 +102,7 @@
     .preview-wrapper {
       width: 100%;
       height: 320px;
-      background: #eee;
+      background: #0d1117;
       border-radius: 4px;
       display: flex;
       align-items: center;
@@ -118,10 +118,10 @@
 
     /* 控制列 */
     .controls {
-      background: #fff;
+      background: #161b22;
+      border: 1px solid #30363d;
       border-radius: 8px;
       padding: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
@@ -137,7 +137,7 @@
     .control-group label {
       font-size: 0.8rem;
       font-weight: 600;
-      color: #555;
+      color: #8b949e;
     }
 
     /* 比例按鈕 */
@@ -149,19 +149,20 @@
 
     .ratio-btn {
       padding: 5px 12px;
-      border: 1px solid #ccc;
+      border: 1px solid #30363d;
       border-radius: 4px;
-      background: #f5f5f5;
+      background: #21262d;
+      color: #e6edf3;
       font-size: 0.85rem;
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
     }
 
-    .ratio-btn:hover { background: #e0e0e0; }
+    .ratio-btn:hover { background: #30363d; }
 
     .ratio-btn.active {
-      background: #1976d2;
-      border-color: #1976d2;
+      background: #00897b;
+      border-color: #00897b;
       color: #fff;
     }
 
@@ -174,31 +175,31 @@
 
     #quality-slider {
       width: 120px;
-      accent-color: #1976d2;
+      accent-color: #00897b;
     }
 
     #quality-value {
       font-size: 0.85rem;
-      color: #333;
+      color: #e6edf3;
       min-width: 36px;
     }
 
     /* 大小顯示 */
     #size-display {
       font-size: 0.85rem;
-      color: #555;
+      color: #8b949e;
     }
 
     #size-display span {
       font-weight: 600;
-      color: #1976d2;
+      color: #4db6ac;
     }
 
     /* 下載按鈕 */
     #download-btn {
       margin-left: auto;
       padding: 10px 24px;
-      background: #1976d2;
+      background: #00897b;
       color: #fff;
       border: none;
       border-radius: 6px;
@@ -208,32 +209,32 @@
       transition: background 0.2s;
     }
 
-    #download-btn:hover { background: #1565c0; }
-    #download-btn:disabled { background: #aaa; cursor: default; }
+    #download-btn:hover { background: #00796b; }
+    #download-btn:disabled { background: #444; cursor: default; }
 
     /* 重設按鈕 */
     #reset-btn {
       padding: 10px 16px;
       background: transparent;
-      color: #666;
-      border: 1px solid #ccc;
+      color: #8b949e;
+      border: 1px solid #30363d;
       border-radius: 6px;
       font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.15s;
     }
 
-    #reset-btn:hover { background: #f0f0f0; }
+    #reset-btn:hover { background: #21262d; }
 
     /* 提示區 */
     .tip-box {
       margin-top: 16px;
-      background: #e8f5e9;
-      border-left: 4px solid #43a047;
+      background: #0d2818;
+      border-left: 4px solid #00897b;
       border-radius: 4px;
       padding: 12px 16px;
       font-size: 0.88rem;
-      color: #2e7d32;
+      color: #4db6ac;
       line-height: 1.6;
     }
 
@@ -242,12 +243,12 @@
     #file-size-warning {
       display: none;
       margin-top: 12px;
-      background: #fff3e0;
+      background: #2d1a00;
       border-left: 4px solid #fb8c00;
       border-radius: 4px;
       padding: 10px 14px;
       font-size: 0.85rem;
-      color: #e65100;
+      color: #ffb74d;
     }
   </style>
 </head>
