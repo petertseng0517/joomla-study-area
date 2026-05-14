@@ -7,3 +7,5 @@
 <li>請勿複製Notes的內容，貼到Joomla的文章中。此舉將帶入複雜的格式程式碼導致拖慢網站速度，且院內檔案路徑，院外民眾瀏覽將看不到檔案(如圖片)。正確方法是先將圖片下載到電腦中，再上傳到Joomla系統中，再插入的文章內容中。</li>
 
 </ul>
+<h3>公傳工具箱</h3>
+<a href="https://petertseng0517.github.io/joomla-study-area/tools/image-to-webp.html">圖片裁切轉 WebP 工具</a>
