@@ -15,3 +15,10 @@
 # 操作影片
 
 [影片操作：如何在joomla文章新增圖片](https://youtu.be/7EjQEsLRE34?si=0WJwy3nODZTtnV-w&t=273)
+<iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/7EjQEsLRE34&start=30" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
