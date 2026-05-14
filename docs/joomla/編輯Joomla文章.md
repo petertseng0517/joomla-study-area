@@ -14,3 +14,10 @@
 # 操作影片
 
 [影片操作：如何編輯Joomla文章](https://www.youtube.com/watch?v=7EjQEsLRE34)
+<iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/7EjQEsLRE34" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>

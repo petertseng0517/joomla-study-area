@@ -13,3 +13,10 @@
 # 操作影片
 
 [影片操作：如何在Joomla文章內文放置檔案下載連結](https://youtu.be/7EjQEsLRE34?si=kFoxcJO3HtiXSQYV&t=548)
+<iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/7EjQEsLRE34&start=548" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
