@@ -296,6 +296,10 @@
           <button class="ratio-btn" data-ratio="1.3333">4:3</button>
           <button class="ratio-btn" data-ratio="1.7778">16:9</button>
           <button class="ratio-btn" data-ratio="0.75">3:4</button>
+          <button class="ratio-btn" data-ratio="0.75" data-output-w="450" data-output-h="600">醫師照 (450×600)</button>
+        </div>
+        <div id="output-size-note" style="display:none; font-size:0.8rem; color:#1976d2; margin-top:4px;">
+          輸出：450×600px，建議不超過 1MB
         </div>
       </div>
 
@@ -337,6 +341,7 @@
   const resetBtn = document.getElementById('reset-btn');
   const noWebpWarning = document.getElementById('no-webp-warning');
   const fileSizeWarning = document.getElementById('file-size-warning');
+  const outputSizeNote = document.getElementById('output-size-note');
 
   const MAX_FILE_MB = 20;
   const MAX_DIMENSION = 4000;
@@ -345,6 +350,8 @@
   let cropper = null;
   let originalFileName = 'image';
   let previewDebounce = null;
+  let outputSize = null;
+  let sizeLimit = JOOMLA_LIMIT_BYTES;
 
   // 檢查瀏覽器是否支援 WebP 輸出
   function supportsWebPOutput() {
@@ -425,20 +432,23 @@
 
   function updatePreview() {
     if (!cropper) return;
-    const canvas = cropper.getCroppedCanvas();
+    const canvas = outputSize
+      ? cropper.getCroppedCanvas({ width: outputSize.w, height: outputSize.h })
+      : cropper.getCroppedCanvas();
     if (!canvas) return;
     const quality = parseInt(qualitySlider.value) / 100;
     // 繪製到預覽 canvas
     previewCanvas.width = canvas.width;
     previewCanvas.height = canvas.height;
     previewCanvas.getContext('2d').drawImage(canvas, 0, 0);
-    // 第 3 層：估算大小，超過 Joomla 限制時紅字警告
+    // 第 3 層：估算大小，超過門檻時紅字警告
     canvas.toBlob((blob) => {
       if (!blob) return;
       const kb = (blob.size / 1024).toFixed(1);
-      const overLimit = blob.size > JOOMLA_LIMIT_BYTES;
+      const overLimit = blob.size > sizeLimit;
+      const limitLabel = sizeLimit <= 1 * 1024 * 1024 ? '1MB' : '2MB';
       sizeDisplay.innerHTML = overLimit
-        ? `約 <span style="color:#d32f2f">${kb} KB ⚠ 超過 Joomla 建議 2MB，請降低品質或縮小裁切範圍</span>`
+        ? `約 <span style="color:#d32f2f">${kb} KB ⚠ 超過 ${limitLabel}，請降低品質或縮小裁切範圍</span>`
         : `約 <span>${kb} KB</span>`;
     }, 'image/webp', quality);
   }
@@ -456,13 +466,29 @@
       btn.classList.add('active');
       const ratio = parseFloat(btn.dataset.ratio);
       cropper.setAspectRatio(isNaN(ratio) ? NaN : ratio);
+
+      // 醫師照模式：固定輸出尺寸與 1MB 門檻
+      const w = parseInt(btn.dataset.outputW);
+      const h = parseInt(btn.dataset.outputH);
+      if (w && h) {
+        outputSize = { w, h };
+        sizeLimit = 1 * 1024 * 1024;
+        outputSizeNote.style.display = 'block';
+      } else {
+        outputSize = null;
+        sizeLimit = JOOMLA_LIMIT_BYTES;
+        outputSizeNote.style.display = 'none';
+      }
+      schedulePreviw();
     });
   });
 
   // 下載
   downloadBtn.addEventListener('click', () => {
     if (!cropper) return;
-    const canvas = cropper.getCroppedCanvas();
+    const canvas = outputSize
+      ? cropper.getCroppedCanvas({ width: outputSize.w, height: outputSize.h })
+      : cropper.getCroppedCanvas();
     if (!canvas) return;
     const quality = parseInt(qualitySlider.value) / 100;
     canvas.toBlob((blob) => {
@@ -485,6 +511,9 @@
     dropZone.style.display = 'block';
     sizeDisplay.innerHTML = '— ';
     fileSizeWarning.style.display = 'none';
+    outputSize = null;
+    sizeLimit = JOOMLA_LIMIT_BYTES;
+    outputSizeNote.style.display = 'none';
     document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
   });
 })();
