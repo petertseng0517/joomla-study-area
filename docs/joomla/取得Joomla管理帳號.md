@@ -13,3 +13,10 @@
 # 操作影片
 
 [影片教學：如何取得Joomla管理帳號](https://www.youtube.com/watch?v=3FKh20c0fOU)
+<iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/3FKh20c0fOU" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
