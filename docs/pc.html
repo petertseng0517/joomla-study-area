@@ -231,6 +231,26 @@
 
     .asset-btn:hover { background: #00796b; }
 
+    /* 院內網路提示橫幅 */
+    .intranet-notice {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #2d1a00;
+      border: 1px solid #fb8c00;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: #ffb74d;
+      font-weight: 600;
+    }
+
+    .intranet-notice .notice-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
     /* 頁尾 */
     footer {
       text-align: center;
@@ -251,6 +271,12 @@
       📹 與網管線上會議討論
     </a>
   </header>
+
+  <!-- 院內網路提示 -->
+  <div class="intranet-notice">
+    <span class="notice-icon">⚠️</span>
+    本頁連結（照片下載、素材取得）需於<strong style="color:#ffcc80;">院內網路環境</strong>下才能正常使用
+  </div>
 
   <!-- 人員照片下載 -->
   <section>
