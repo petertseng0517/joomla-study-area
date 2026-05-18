@@ -366,6 +366,85 @@ nav{
     }
 }
 
+/* ===== TEAM ===== */
+
+.team{
+    padding:120px 10%;
+    background:#f7f3ee;
+    border-top:1px solid rgba(44,31,16,0.06);
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:60px;
+}
+
+.team-card{
+    padding:36px 28px;
+    border:1px solid rgba(44,31,16,0.1);
+    border-radius:2px;
+    background:#f7f3ee;
+    transition:all 0.45s cubic-bezier(.19,1,.22,1);
+}
+
+.team-card:hover{
+    border-color:#b5893a;
+    box-shadow:0 8px 32px rgba(181,137,58,0.1);
+    transform:translateY(-4px);
+}
+
+.team-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:44px;
+    font-weight:300;
+    color:rgba(44,31,16,0.07);
+    line-height:1;
+    margin-bottom:14px;
+}
+
+.team-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:26px;
+    font-weight:300;
+    color:#2c1f10;
+    letter-spacing:4px;
+    margin-bottom:6px;
+}
+
+.team-title{
+    font-size:11px;
+    letter-spacing:3px;
+    color:#b5893a;
+    margin-bottom:16px;
+}
+
+.team-divider{
+    width:20px;
+    height:1px;
+    background:rgba(44,31,16,0.15);
+    margin-bottom:14px;
+}
+
+.team-duties{
+    font-size:13px;
+    line-height:2;
+    color:rgba(44,31,16,0.52);
+}
+
+@media(max-width:768px){
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:480px){
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+}
+
 /* ===== REVEAL ===== */
 
 .reveal{
@@ -873,6 +952,94 @@ footer{
                 </div>
                 <div class="work-cta">進入導覽 →</div>
             </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="team">
+
+    <div class="reveal">
+
+        <div class="kicker">OUR TEAM</div>
+
+        <div class="big-text">我們的團隊</div>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <div class="team-num">01</div>
+                <div class="team-name">游繡華</div>
+                <div class="team-title">主任</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">統籌督導<br>慈濟醫療人文月刊撰述委員<br>績效考核</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">02</div>
+                <div class="team-name">黃思齊</div>
+                <div class="team-title">高級專員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">業務督導<br>編列預算<br>主持人</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">03</div>
+                <div class="team-name">吳宛霖</div>
+                <div class="team-title">專員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">新聞編輯<br>投稿灼見名家</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">04</div>
+                <div class="team-name">劉明繐</div>
+                <div class="team-title">組長</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">美術編輯設計</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">05</div>
+                <div class="team-name">江家瑜</div>
+                <div class="team-title">助理專員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">籌辦記者會<br>媒體合作專案</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">06</div>
+                <div class="team-name">曾建瑋</div>
+                <div class="team-title">助理專員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">官網維運<br>系統管理</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">07</div>
+                <div class="team-name">徐立勤</div>
+                <div class="team-title">組員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">影片攝影剪輯</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">08</div>
+                <div class="team-name">宋雨安</div>
+                <div class="team-title">組員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">新聞採訪編輯</div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-num">09</div>
+                <div class="team-name">陳怡璇</div>
+                <div class="team-title">組員</div>
+                <div class="team-divider"></div>
+                <div class="team-duties">美術編輯設計</div>
+            </div>
 
         </div>
 
