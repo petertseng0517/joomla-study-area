@@ -294,61 +294,6 @@ nav{
     to{ transform:translateX(-100vw); }
 }
 
-/* ===== SECTION ===== */
-
-.section{
-    position:relative;
-    min-height:65vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
-
-.section-image{
-    position:absolute;
-    inset:0;
-    background-size:cover;
-    background-position:center;
-    transform:scale(1.08);
-    filter:brightness(0.8) saturate(0.85) sepia(0.2);
-}
-
-.section-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom, rgba(247,243,238,0.88), rgba(240,234,222,0.72));
-}
-
-.section-content{
-    position:relative;
-    z-index:2;
-    width:min(1100px, 90%);
-    color:#2c1f10;
-}
-
-.kicker{
-    font-size:11px;
-    letter-spacing:6px;
-    margin-bottom:25px;
-    color:#b5893a;
-}
-
-.big-text{
-    font-family:'Cormorant Garamond', serif;
-    font-size:clamp(46px, 7vw, 100px);
-    line-height:1.1;
-    font-weight:300;
-    margin-bottom:40px;
-    color:#2c1f10;
-}
-
-.section-desc{
-    max-width:540px;
-    line-height:2.1;
-    color:rgba(44,31,16,0.62);
-    font-size:15px;
-}
 
 /* ===== WORKS ===== */
 
@@ -1239,86 +1184,6 @@ footer{
 
 </section>
 
-<section class="section">
-
-    <div class="section-image"
-    style="background-image:url('https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1800&auto=format&fit=crop');"></div>
-
-    <div class="section-overlay"></div>
-
-    <div class="section-content reveal">
-
-        <div class="kicker">人文紀錄</div>
-
-        <div class="big-text">
-            每一個故事<br>
-            都值得被看見
-        </div>
-
-        <div class="section-desc">
-            從急診室的燈光到病房裡的守候，
-            從醫護人員的堅持到病人的重生，
-            我們走進生命現場，
-            用文字與影像留下這份溫度。
-        </div>
-
-    </div>
-
-</section>
-
-<section class="section">
-
-    <div class="section-image"
-    style="background-image:url('https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1800&auto=format&fit=crop');"></div>
-
-    <div class="section-overlay"></div>
-
-    <div class="section-content reveal">
-
-        <div class="kicker">慈濟人文</div>
-
-        <div class="big-text">
-            醫療之外<br>
-            是人與人的相遇
-        </div>
-
-        <div class="section-desc">
-            慈濟人文不只是精神，
-            它活在每一次問診的眼神裡、
-            每一個跨越病痛的擁抱裡。
-            我們的任務，是讓這份精神被更多人看見。
-        </div>
-
-    </div>
-
-</section>
-
-<section class="section">
-
-    <div class="section-image"
-    style="background-image:url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1800&auto=format&fit=crop');"></div>
-
-    <div class="section-overlay"></div>
-
-    <div class="section-content reveal">
-
-        <div class="kicker">研究與成就</div>
-
-        <div class="big-text">
-            醫學的進步<br>
-            從花蓮出發
-        </div>
-
-        <div class="section-desc">
-            花蓮慈濟醫院的醫療團隊持續突破，
-            研究成果走向國際。
-            我們負責將這些成就轉化為社會能理解的語言，
-            讓醫學的光照得更遠。
-        </div>
-
-    </div>
-
-</section>
 
 <footer>
 
@@ -1423,20 +1288,6 @@ const observer = new IntersectionObserver((entries)=>{
 
 reveals.forEach(el=>observer.observe(el));
 
-/* ===== PARALLAX ===== */
-
-window.addEventListener('scroll', ()=>{
-
-    const scrollY = window.scrollY;
-
-    document.querySelectorAll('.section-image').forEach((bg,index)=>{
-
-        const speed = 0.08;
-        bg.style.transform = `translateY(${scrollY * speed}px) scale(1.08)`;
-
-    });
-
-});
 
 </script>
 
