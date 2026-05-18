@@ -209,17 +209,11 @@
   <!-- 頻道與社群 -->
   <div class="group">
     <div class="group-label">頻道與社群</div>
-    <div class="stat-grid stat-grid-4">
+    <div class="stat-grid stat-grid-3">
 
       <div class="stat-card">
         <div class="stat-value loading" id="yt-subs">—</div>
         <div class="stat-label">訂閱人數</div>
-        <span class="stat-badge badge-yt">YouTube</span>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-value loading" id="yt-videos">—</div>
-        <div class="stat-label">影片數量</div>
         <span class="stat-badge badge-yt">YouTube</span>
       </div>
 
@@ -317,14 +311,6 @@ document.getElementById('year-tag').textContent = new Date().getFullYear() + ' �
   const API_KEY    = 'AIzaSyCrGI_ZGqZJS0YPCW_C-7AGr4KMul6Z254';
   const CHANNEL_ID = 'UC4cGxfjbE0dPnBOhHo0igTA';
 
-  function fmt(n) {
-    n = parseInt(n, 10);
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
-    if (n >= 10_000)    return (n / 1_000).toFixed(0) + 'K';
-    if (n >= 1_000)     return (n / 1_000).toFixed(1) + 'K';
-    return n.toLocaleString('zh-TW');
-  }
-
   function set(id, val) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -337,10 +323,9 @@ document.getElementById('year-tag').textContent = new Date().getFullYear() + ' �
     .then(data => {
       const s = data.items?.[0]?.statistics;
       if (!s) throw new Error();
-      set('yt-subs',   fmt(s.subscriberCount));
-      set('yt-videos', fmt(s.videoCount));
+      set('yt-subs', parseInt(s.subscriberCount, 10).toLocaleString('zh-TW'));
     })
-    .catch(() => ['yt-subs', 'yt-videos'].forEach(id => set(id, '—')));
+    .catch(() => set('yt-subs', '—'));
 })();
 </script>
 
