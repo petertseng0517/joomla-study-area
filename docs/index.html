@@ -712,6 +712,22 @@ nav{
     letter-spacing:4px;
 }
 
+.gateway-sub{
+    display:inline-block;
+    margin-top:12px;
+    font-size:11px;
+    letter-spacing:2px;
+    color:rgba(44,31,16,0.4);
+    text-decoration:none;
+    border-bottom:1px solid rgba(44,31,16,0.15);
+    transition:color 0.2s, border-color 0.2s;
+}
+
+.gateway-sub:hover{
+    color:#b5893a;
+    border-color:#b5893a;
+}
+
 @media(max-width:768px){
     .gateway{
         padding:80px 6%;
@@ -1021,6 +1037,7 @@ footer{
                     供網站維護同仁參考。
                 </div>
                 <div class="gateway-cta">📖 開啟教學文件 →</div>
+                <a class="gateway-sub" href="web-admin.html" onclick="event.stopPropagation()">🔑 直接登入後台</a>
             </a>
 
             <a class="gateway-card" href="dashboard.html">
