@@ -286,8 +286,8 @@
 
 <script>
 (function () {
-  const API_KEY = 'AIzaSyCrGI_ZGqZJS0YPCW_C-7AGr4KMul6Z254';
-  const HANDLE  = 'hltchos';
+  const API_KEY    = 'AIzaSyCrGI_ZGqZJS0YPCW_C-7AGr4KMul6Z254';
+  const CHANNEL_ID = 'UC4cGxfjbE0dPnBOhHo0igTA';
 
   function fmt(n) {
     n = parseInt(n, 10);
@@ -304,7 +304,7 @@
     el.textContent = val;
   }
 
-  fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&forHandle=${HANDLE}&key=${API_KEY}`)
+  fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`)
     .then(r => r.json())
     .then(data => {
       const s = data.items?.[0]?.statistics;
