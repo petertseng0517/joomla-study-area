@@ -17,10 +17,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1000px; margin: 0 auto; }
 
     /* 頁首 */
     .site-header {
@@ -34,17 +31,9 @@
       gap: 12px;
     }
 
-    .site-header h1 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #e6edf3;
-    }
+    .site-header h1 { font-size: 1.35rem; font-weight: 700; }
 
-    .site-header .sub {
-      font-size: 0.82rem;
-      color: #8b949e;
-      margin-top: 4px;
-    }
+    .site-header .sub { font-size: 0.82rem; color: #8b949e; margin-top: 4px; }
 
     .back-btn {
       display: inline-flex;
@@ -56,13 +45,15 @@
       border-radius: 6px;
       font-size: 0.82rem;
       color: #8b949e;
-      transition: border-color 0.15s, color 0.15s;
       white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s;
     }
 
     .back-btn:hover { border-color: #4db6ac; color: #4db6ac; }
 
-    /* 區塊標題列 */
+    /* 區塊 */
+    .group { margin-bottom: 32px; }
+
     .group-label {
       font-size: 0.7rem;
       font-weight: 700;
@@ -82,23 +73,41 @@
       background: #21262d;
     }
 
-    .group { margin-bottom: 28px; }
+    .group-label .year-tag {
+      font-size: 0.68rem;
+      padding: 1px 8px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      color: #8b949e;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      flex-shrink: 0;
+    }
 
-    /* 數據格線 */
-    .stat-grid { display: grid; gap: 12px; }
-    .stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .manual-note {
+      font-size: 0.73rem;
+      color: #484f58;
+      margin-bottom: 12px;
+    }
+
+    /* 格線 */
+    .stat-grid   { display: grid; gap: 12px; }
     .stat-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-    @media (max-width: 640px) {
-      .stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 700px) {
       .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid-3 { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-width: 380px) {
-      .stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 400px) {
+      .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid-3 { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* 數據卡片 */
+    /* 卡片 */
     .stat-card {
       background: #161b22;
       border: 1px solid #30363d;
@@ -107,14 +116,14 @@
       transition: border-color 0.15s;
     }
 
-    .stat-card:hover { border-color: #4db6ac; }
+    .stat-card:hover { border-color: #30363d; }
 
     .stat-value {
-      font-size: 1.7rem;
+      font-size: 1.75rem;
       font-weight: 700;
       color: #e6edf3;
-      line-height: 1.15;
-      margin-bottom: 5px;
+      line-height: 1.1;
+      margin-bottom: 6px;
       min-height: 2.1rem;
     }
 
@@ -122,13 +131,13 @@
       color: transparent;
       background: #21262d;
       border-radius: 4px;
-      width: 60%;
+      width: 55%;
       animation: pulse 1.4s infinite ease-in-out;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.35; }
-      50%       { opacity: 0.75; }
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 0.7; }
     }
 
     .stat-label {
@@ -140,7 +149,7 @@
 
     .stat-badge {
       display: inline-block;
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       padding: 2px 7px;
       border-radius: 4px;
       font-weight: 700;
@@ -148,16 +157,10 @@
     }
 
     .badge-yt     { background: rgba(255,0,0,0.15);     color: #ff7070; }
-    .badge-manual { background: rgba(77,182,172,0.1);   color: #4db6ac; }
     .badge-fb     { background: rgba(24,119,242,0.15);  color: #6ca4f8; }
     .badge-ig     { background: rgba(193,53,132,0.15);  color: #e870b0; }
-
-    /* 手動指標說明 */
-    .manual-note {
-      font-size: 0.75rem;
-      color: #484f58;
-      margin-bottom: 12px;
-    }
+    .badge-manual { background: rgba(77,182,172,0.1);   color: #4db6ac; }
+    .badge-media  { background: rgba(234,179,8,0.12);   color: #fbbf24; }
 
     /* Looker Studio */
     .looker-wrap {
@@ -185,20 +188,11 @@
     .looker-placeholder strong {
       display: block;
       color: #4db6ac;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
     }
 
     .looker-placeholder a { color: #4db6ac; text-decoration: underline; }
-
-    /* 最後更新時間 */
-    .update-time {
-      font-size: 0.72rem;
-      color: #484f58;
-      text-align: right;
-      margin-top: -20px;
-      margin-bottom: 28px;
-    }
   </style>
 </head>
 <body>
@@ -212,57 +206,87 @@
     <a class="back-btn" href="pc.html">← 返回公傳服務總覽</a>
   </header>
 
-  <!-- YouTube 即時數據 -->
+  <!-- 頻道與社群 -->
   <div class="group">
-    <div class="group-label">YouTube 頻道即時數據</div>
-    <div class="stat-grid stat-grid-3">
+    <div class="group-label">頻道與社群</div>
+    <div class="stat-grid stat-grid-4">
+
       <div class="stat-card">
         <div class="stat-value loading" id="yt-subs">—</div>
         <div class="stat-label">訂閱人數</div>
         <span class="stat-badge badge-yt">YouTube</span>
       </div>
-      <div class="stat-card">
-        <div class="stat-value loading" id="yt-views">—</div>
-        <div class="stat-label">總觀看數</div>
-        <span class="stat-badge badge-yt">YouTube</span>
-      </div>
+
       <div class="stat-card">
         <div class="stat-value loading" id="yt-videos">—</div>
         <div class="stat-label">影片數量</div>
         <span class="stat-badge badge-yt">YouTube</span>
       </div>
-    </div>
-  </div>
 
-  <!-- 手動更新指標 -->
-  <div class="group">
-    <div class="group-label">傳播成效指標（手動更新）</div>
-    <p class="manual-note">直接修改下方各卡片內的數字即可更新。</p>
-    <div class="stat-grid stat-grid-4">
-      <div class="stat-card">
-        <div class="stat-value">0</div><!-- ← 更新此數字 -->
-        <div class="stat-label">新聞稿<br>（本年度）</div>
-        <span class="stat-badge badge-manual">手動</span>
-      </div>
       <div class="stat-card">
         <div class="stat-value">0</div><!-- ← 更新此數字 -->
         <div class="stat-label">FB 粉絲數</div>
         <span class="stat-badge badge-fb">Facebook</span>
       </div>
+
       <div class="stat-card">
         <div class="stat-value">0</div><!-- ← 更新此數字 -->
         <div class="stat-label">IG 追蹤數</div>
         <span class="stat-badge badge-ig">Instagram</span>
       </div>
-      <div class="stat-card">
-        <div class="stat-value">0</div><!-- ← 更新此數字 -->
-        <div class="stat-label">活動場次<br>（本年度）</div>
-        <span class="stat-badge badge-manual">手動</span>
-      </div>
+
     </div>
   </div>
 
-  <!-- Google Analytics — Looker Studio -->
+  <!-- 年度業務量 -->
+  <div class="group">
+    <div class="group-label">
+      年度業務量
+      <span class="year-tag" id="year-tag">2026 年度</span>
+    </div>
+    <p class="manual-note">直接修改各卡片內的數字即可更新。</p>
+    <div class="stat-grid stat-grid-3">
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">新聞稿發布數</div>
+        <span class="stat-badge badge-manual">手動</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">媒體露出次數</div>
+        <span class="stat-badge badge-media">手動</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">影片製作件數</div>
+        <span class="stat-badge badge-manual">手動</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">攝影服務件數</div>
+        <span class="stat-badge badge-manual">手動</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">設計案件數</div>
+        <span class="stat-badge badge-manual">手動</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-label">活動場次</div>
+        <span class="stat-badge badge-manual">手動</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Google Analytics -->
   <div class="group">
     <div class="group-label">Google Analytics（網站流量）</div>
     <div class="looker-wrap">
@@ -270,14 +294,14 @@
         設定步驟：
         1. 前往 Looker Studio → 建立報表 → 連結 GA4 資料來源
         2. 點「分享」→「嵌入報表」→ 複製 iframe src 網址
-        3. 將下方 <div class="looker-placeholder"> 整段替換為：
+        3. 將下方 looker-placeholder 整段替換為：
            <iframe src="YOUR_LOOKER_URL" allowfullscreen></iframe>
       -->
       <div class="looker-placeholder">
         <strong>待連結 Looker Studio 報表</strong>
         前往 <a href="https://lookerstudio.google.com" target="_blank">Looker Studio</a>
         建立 GA4 報表後，<br>
-        點「分享 → 嵌入報表」，將 iframe src 網址貼入此區塊。
+        點「分享 → 嵌入報表」，將 iframe src 貼入此區塊。
       </div>
     </div>
   </div>
@@ -285,6 +309,10 @@
 </div>
 
 <script>
+/* 年度標籤自動更新 */
+document.getElementById('year-tag').textContent = new Date().getFullYear() + ' 年度';
+
+/* YouTube API */
 (function () {
   const API_KEY    = 'AIzaSyCrGI_ZGqZJS0YPCW_C-7AGr4KMul6Z254';
   const CHANNEL_ID = 'UC4cGxfjbE0dPnBOhHo0igTA';
@@ -310,10 +338,9 @@
       const s = data.items?.[0]?.statistics;
       if (!s) throw new Error();
       set('yt-subs',   fmt(s.subscriberCount));
-      set('yt-views',  fmt(s.viewCount));
       set('yt-videos', fmt(s.videoCount));
     })
-    .catch(() => ['yt-subs','yt-views','yt-videos'].forEach(id => set(id, '—')));
+    .catch(() => ['yt-subs', 'yt-videos'].forEach(id => set(id, '—')));
 })();
 </script>
 
