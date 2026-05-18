@@ -571,9 +571,9 @@ nav{
 }
 
 .gateway-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
     margin-top:60px;
 }
 
@@ -582,15 +582,12 @@ nav{
     background:#2c1f10;
     border-color:transparent;
     border-left:3px solid #b5893a;
-    flex-direction:column;
 }
 
 .gateway-card:first-child .gateway-tag{
-    order:-1;
     border-color:rgba(255,160,40,0.55);
     color:#ffb74d;
     background:rgba(255,120,0,0.1);
-    margin-bottom:20px;
 }
 
 .gateway-card:first-child .gateway-num{
@@ -626,8 +623,10 @@ nav{
 
 .gateway-card{
     display:flex;
-    flex-direction:column;
-    padding:48px 40px;
+    flex-direction:row;
+    align-items:center;
+    gap:32px;
+    padding:32px 40px;
     border:1px solid rgba(44,31,16,0.12);
     border-radius:2px;
     text-decoration:none;
@@ -636,6 +635,11 @@ nav{
     background:#f7f3ee;
     position:relative;
     overflow:hidden;
+}
+
+.gateway-body{
+    flex:1;
+    min-width:0;
 }
 
 .gateway-card::before{
@@ -659,19 +663,20 @@ nav{
 
 .gateway-num{
     font-family:'Cormorant Garamond', serif;
-    font-size:80px;
+    font-size:56px;
     font-weight:300;
     color:rgba(44,31,16,0.07);
     line-height:1;
-    margin-bottom:16px;
+    flex-shrink:0;
+    width:56px;
 }
 
 .gateway-label{
     font-family:'Cormorant Garamond', serif;
-    font-size:38px;
+    font-size:26px;
     font-weight:300;
     letter-spacing:2px;
-    margin-bottom:16px;
+    margin-bottom:6px;
     line-height:1.2;
     color:#2c1f10;
 }
@@ -680,34 +685,35 @@ nav{
     display:inline-block;
     font-size:11px;
     letter-spacing:2px;
-    padding:4px 10px;
+    padding:3px 8px;
     border:1px solid rgba(181,137,58,0.45);
     color:rgba(150,90,15,0.9);
     background:rgba(181,137,58,0.07);
     border-radius:2px;
-    margin-bottom:20px;
+    margin-bottom:8px;
     width:fit-content;
 }
 
 .gateway-desc{
-    font-size:14px;
-    line-height:2.1;
+    font-size:13px;
+    line-height:1.9;
     color:rgba(44,31,16,0.55);
-    flex:1;
-    margin-bottom:36px;
+    margin:0;
 }
 
 .gateway-cta{
     font-size:12px;
-    letter-spacing:3px;
+    letter-spacing:2px;
     color:#b5893a;
     font-weight:600;
+    flex-shrink:0;
+    white-space:nowrap;
     transition:color 0.3s, letter-spacing 0.3s;
 }
 
 .gateway-card:hover .gateway-cta{
     color:#96701f;
-    letter-spacing:4px;
+    letter-spacing:3px;
 }
 
 .gateway-sub{
@@ -726,18 +732,22 @@ nav{
     border-color:#b5893a;
 }
 
-@media(max-width:768px){
+@media(max-width:600px){
     .gateway{
         padding:80px 6%;
     }
-    .gateway-grid{
-        grid-template-columns:1fr;
-    }
-    .gateway-label{
-        font-size:28px;
+    .gateway-card{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+        padding:28px 24px;
     }
     .gateway-num{
-        font-size:60px;
+        font-size:40px;
+        width:auto;
+    }
+    .gateway-cta{
+        width:100%;
     }
 }
 
@@ -1012,35 +1022,28 @@ footer{
 
             <a class="gateway-card" href="pc.html">
                 <div class="gateway-num">01</div>
-                <div class="gateway-label">公傳服務總覽</div>
-                <div class="gateway-tag">⚠ 需院內網路</div>
-                <div class="gateway-desc">
-                    人員照片下載、各類業務申請窗口、<br>
-                    院內公版素材取得，<br>
-                    以及網站管理後台入口。
+                <div class="gateway-body">
+                    <div class="gateway-tag">⚠ 需院內網路</div>
+                    <div class="gateway-label">公傳服務總覽</div>
+                    <div class="gateway-desc">人員照片下載、業務申請窗口、院內公版素材取得及網站管理後台入口。</div>
                 </div>
                 <div class="gateway-cta">🔐 進入服務頁 →</div>
             </a>
 
             <a class="gateway-card" href="joomla_study/">
                 <div class="gateway-num">02</div>
-                <div class="gateway-label">Joomla 教學文件</div>
-                <div class="gateway-desc">
-                    醫院官網、醫療科網的管理教學，<br>
-                    涵蓋基礎操作到各部門進階指南，<br>
-                    供網站維護同仁參考。
+                <div class="gateway-body">
+                    <div class="gateway-label">Joomla 教學文件</div>
+                    <div class="gateway-desc">醫院官網、醫療科網的管理教學，涵蓋基礎操作到各部門進階指南。</div>
                 </div>
                 <div class="gateway-cta">📖 開啟教學文件 →</div>
-                <a class="gateway-sub" href="web-admin.html" onclick="event.stopPropagation()">🔑 直接登入後台</a>
             </a>
 
             <a class="gateway-card" href="dashboard.html">
                 <div class="gateway-num">03</div>
-                <div class="gateway-label">傳播成效儀表板</div>
-                <div class="gateway-desc">
-                    YouTube 頻道即時數據、<br>
-                    社群媒體指標與 Google Analytics<br>
-                    網站流量報表。
+                <div class="gateway-body">
+                    <div class="gateway-label">傳播成效儀表板</div>
+                    <div class="gateway-desc">YouTube 頻道即時數據、社群媒體指標與 Google Analytics 網站流量報表。</div>
                 </div>
                 <div class="gateway-cta">📊 查看數據 →</div>
             </a>
