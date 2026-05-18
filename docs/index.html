@@ -478,37 +478,10 @@ nav{
     transform:translateY(-4px);
 }
 
-.team-photo-wrap{
-    width:100%;
-    overflow:hidden;
-    aspect-ratio:3 / 4;
-    /* fallback for browsers without aspect-ratio */
-    position:relative;
-}
-
-.team-photo-wrap::before{
-    content:'';
-    display:block;
-    padding-top:133.33%; /* 4/3 × 100% */
-}
-
-@supports (aspect-ratio: 3/4){
-    .team-photo-wrap::before{ display:none; }
-}
-
 .team-photo{
-    position:absolute;
-    inset:0;
     width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center top;
+    height:auto;
     display:block;
-    transition:transform 0.5s ease;
-}
-
-@supports not (aspect-ratio: 3/4){
-    .team-photo{ position:absolute; }
 }
 
 .team-card:hover .team-photo{
@@ -1077,7 +1050,7 @@ footer{
         <div class="team-grid">
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-01.webp" alt="游繡華"></div>
+                <img class="team-photo" src="team-01.webp" alt="游繡華">
                 <div class="team-card-body">
                     <div class="team-num">01</div>
                     <div class="team-name">游繡華</div>
@@ -1088,7 +1061,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-02.webp" alt="黃思齊"></div>
+                <img class="team-photo" src="team-02.webp" alt="黃思齊">
                 <div class="team-card-body">
                     <div class="team-num">02</div>
                     <div class="team-name">黃思齊</div>
@@ -1099,7 +1072,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-03.webp" alt="吳宛霖"></div>
+                <img class="team-photo" src="team-03.webp" alt="吳宛霖">
                 <div class="team-card-body">
                     <div class="team-num">03</div>
                     <div class="team-name">吳宛霖</div>
@@ -1110,7 +1083,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-04.webp" alt="劉明繐"></div>
+                <img class="team-photo" src="team-04.webp" alt="劉明繐">
                 <div class="team-card-body">
                     <div class="team-num">04</div>
                     <div class="team-name">劉明繐</div>
@@ -1121,7 +1094,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-05.webp" alt="江家瑜"></div>
+                <img class="team-photo" src="team-05.webp" alt="江家瑜">
                 <div class="team-card-body">
                     <div class="team-num">05</div>
                     <div class="team-name">江家瑜</div>
@@ -1132,7 +1105,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-06.webp" alt="曾建瑋"></div>
+                <img class="team-photo" src="team-06.webp" alt="曾建瑋">
                 <div class="team-card-body">
                     <div class="team-num">06</div>
                     <div class="team-name">曾建瑋</div>
@@ -1143,7 +1116,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-07.webp" alt="徐立勤"></div>
+                <img class="team-photo" src="team-07.webp" alt="徐立勤">
                 <div class="team-card-body">
                     <div class="team-num">07</div>
                     <div class="team-name">徐立勤</div>
@@ -1154,7 +1127,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-08.webp" alt="宋雨安"></div>
+                <img class="team-photo" src="team-08.webp" alt="宋雨安">
                 <div class="team-card-body">
                     <div class="team-num">08</div>
                     <div class="team-name">宋雨安</div>
@@ -1165,7 +1138,7 @@ footer{
             </div>
 
             <div class="team-card">
-                <div class="team-photo-wrap"><img class="team-photo" src="team-09.webp" alt="陳怡璇"></div>
+                <img class="team-photo" src="team-09.webp" alt="陳怡璇">
                 <div class="team-card-body">
                     <div class="team-num">09</div>
                     <div class="team-name">陳怡璇</div>
