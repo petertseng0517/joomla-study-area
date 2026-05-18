@@ -218,7 +218,7 @@
       </div>
 
       <div class="stat-card">
-        <div class="stat-value">0</div><!-- ← 更新此數字 -->
+        <div class="stat-value loading" id="fb-fans">—</div>
         <div class="stat-label">FB 粉絲數</div>
         <span class="stat-badge badge-fb">Facebook</span>
       </div>
@@ -326,6 +326,27 @@ document.getElementById('year-tag').textContent = new Date().getFullYear() + ' �
       set('yt-subs', parseInt(s.subscriberCount, 10).toLocaleString('zh-TW'));
     })
     .catch(() => set('yt-subs', '—'));
+})();
+
+/* Facebook 粉絲數 */
+(function () {
+  const PAGE_ID = '920818914631773';
+  const TOKEN   = 'EAAMVp5i8HGoBRY25PgW75xqQKLlu7g7CBVLyg7ZBUqVaFHmxOQOBQnpQzfbJYk1WVthQRgavaAZBovpWYpZBpYZAnu5HvgzAVwQ9ZC8IldnOHmdzDJqQHfEfUtLGw0G50ft52ZCPVtGz4xpJQKzgDtpuDZApSjq1E545IgW3LMgnHuVZA49bZAbWBHQPcZADppCYOvJ8zIDMNQdR5q3A0ovfDdEP3bMaSUk6iZAlpF4l7qSLeA9RmUIFZCduaftbZC6EZD';
+
+  function set(id, val) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('loading');
+    el.textContent = val;
+  }
+
+  fetch(`https://graph.facebook.com/v19.0/${PAGE_ID}?fields=followers_count&access_token=${TOKEN}`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.followers_count) throw new Error();
+      set('fb-fans', parseInt(data.followers_count).toLocaleString('zh-TW'));
+    })
+    .catch(() => set('fb-fans', '—'));
 })();
 </script>
 
